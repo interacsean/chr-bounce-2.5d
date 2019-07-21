@@ -1,0 +1,41 @@
+GameState {
+  Board,
+    Gamepieces: Array < GamepieceState >,
+      Cursor: { level, x, y },
+  Inventory: Array <>,
+}
+
+<Game {...GameState}>
+  gamestate.board.levels.map()
+    <GameLevel {GameLevel} active cursor>
+    <InventoryPanel inventory />
+</Game>
+
+  gameController {
+    onKeyUp({ key, gameState }) {
+  // if altering gameboard
+  store.updateGameBoard()
+  store.updateInveotry()
+  // if moving cursor
+  store.updateCursor()
+}
+
+  tick({gameState}) {
+    gameStateService.frame();
+  // update gamepieces based on momentum, their interactions with gameboard
+
+  store.updateGameState(newGameState)
+}
+}
+
+service/gameState {
+    frame(gameState) {
+  gameState.pieces.map(_movePiece)
+}
+  _movePiece(piece, gameBoard) {
+
+  }
+  _collisionOutcome(tilePiece=" ", direction): [newChr=null, ballDirection] {
+    // switch all tilePieces
+  }
+  }
