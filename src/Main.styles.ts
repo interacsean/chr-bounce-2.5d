@@ -1,7 +1,13 @@
-export default function(vars: Object) {
+import { CSSProperties } from 'react';
+
+type Vars = {
+  shortest: number,
+};
+
+export default function(vars: Vars) {
   return {
-    gameScreenCtnr: {
-      position: "relative",
+    gameScreenCtnr: <CSSProperties> {
+      position: 'relative',
       width: `${vars.shortest}px`,
       height: `${vars.shortest}px`
     }

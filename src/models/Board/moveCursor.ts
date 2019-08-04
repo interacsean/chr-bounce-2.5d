@@ -1,5 +1,5 @@
-import { Cursor as CursorType, SideEffect, Direction } from "../../types/";
-import { noop } from "lodash";
+import { Cursor as CursorType, SideEffect, Direction } from '../../types/';
+import { noop } from 'lodash';
 
 interface MoveCursorDeps {
   setCursor: Function;

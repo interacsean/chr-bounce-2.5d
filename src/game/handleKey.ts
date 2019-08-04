@@ -1,5 +1,5 @@
-import { moveCursor, trySetTile } from "../models/Board";
-import { Cursor as CursorType, Board as BoardType, Direction } from "../types";
+import { moveCursor, trySetTile } from '../models/Board';
+import { Cursor as CursorType, Board as BoardType, Direction } from '../types';
 
 interface HandleKeyProps {
   setCursor: Function;
@@ -9,13 +9,13 @@ interface HandleKeyProps {
 }
 
 export default function handleKey(props: HandleKeyProps, event: KeyboardEvent) {
-  if (event.code === "ArrowLeft") {
+  if (event.code === 'ArrowLeft') {
     moveCursor(props, Direction.W)();
-  } else if (event.code === "ArrowRight") {
+  } else if (event.code === 'ArrowRight') {
     moveCursor(props, Direction.E)();
-  } else if (event.code === "ArrowDown") {
+  } else if (event.code === 'ArrowDown') {
     moveCursor(props, Direction.S)();
-  } else if (event.code === "ArrowUp") {
+  } else if (event.code === 'ArrowUp') {
     moveCursor(props, Direction.N)();
   } else if (
     (event.keyCode >= 65 && event.keyCode <= 90) || // a-z
@@ -32,16 +32,16 @@ export default function handleKey(props: HandleKeyProps, event: KeyboardEvent) {
   }
 }
 
-/**
-semi-colon	186
-equal sign	187
-comma	188
-dash	189
-period	190
-forward slash	191
-grave accent	192
-open bracket	219
-back slash	220
-close braket	221
-single quote	222
- */
+/*
+  semi-colon	186
+  equal sign	187
+  comma	188
+  dash	189
+  period	190
+  forward slash	191
+  grave accent	192
+  open bracket	219
+  back slash	220
+  close braket	221
+  single quote	222
+*/

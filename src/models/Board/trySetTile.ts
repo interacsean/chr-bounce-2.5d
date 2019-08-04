@@ -1,24 +1,55 @@
 import {
   Board as BoardType,
   Cursor as CursorType,
-  BoardTile as TileType,
   PureMethod,
-  SideEffect
-} from "../../types";
-import { isEqual, noop } from "lodash";
+  SideEffect,
+  BoardTile as BoardTileType,
+} from '../../types';
+import { isEqual, noop } from 'lodash';
 
 interface TrySetTileDeps {
   setBoard: Function;
   cursor: CursorType;
 }
 
+/**
+ * This updates the board, only updating that actual memory pointer of the tile required.
+ */
+const updateTileOfBoard: PureMethod<BoardType> = (
+  board: BoardType
+): Function => (
+  lev: number,
+  x: number,
+  y: number,
+  tile: BoardTileType
+): BoardType => {
+  return isEqual(((board.get(lev) || [])[y] || [])[x], tile)
+    ? board
+    : new Map(
+        board.set(
+          lev,
+          (board.get(lev) || []).map(
+            (row: Array<BoardTileType>, rowKey: number): Array<BoardTileType> => {
+              return rowKey !== y
+                ? row
+                : row.map(
+                    (oldTile: BoardTileType, colKey: number): BoardTileType =>
+                      colKey === x ? tile : oldTile
+                  );
+            }
+          )
+        )
+      );
+};
+
 export default function trySetTile(board: BoardType): Function {
   return ({ cursor, setBoard }: TrySetTileDeps, chr: string): SideEffect => {
     // todo: safe fallback on this
-    const curTile: TileType = board.get(cursor[2])[cursor[1]][cursor[0]];
-    if (curTile.editable && curTile.chr !== chr) {
+    const curTile: BoardTileType | undefined = (board.get(cursor[2]) || [])[cursor[1]][cursor[0]];
+
+    if (curTile && curTile.editable && curTile.chr !== chr) {
       // todo: add conditions, not where a piece currently is?
-      const newTile: TileType = {
+      const newTile: BoardTileType = {
         chr,
         editable: true
       };
@@ -37,33 +68,3 @@ export default function trySetTile(board: BoardType): Function {
     return noop;
   };
 }
-
-/**
- * This updates the board, only updating that actual memory pointer of the tile required.
- */
-const updateTileOfBoard: PureMethod<BoardType> = (
-  board: BoardType
-): Function => (
-  lev: number,
-  x: number,
-  y: number,
-  tile: TileType
-): BoardType => {
-  return isEqual(((board.get(lev) || [])[y] || [])[x], tile)
-    ? board
-    : new Map(
-        board.set(
-          lev,
-          (board.get(lev) || []).map(
-            (row: Array<TileType>, rowKey: number): Array<TileType> => {
-              return rowKey !== y
-                ? row
-                : row.map(
-                    (oldTile: TileType, colKey: number): TileType =>
-                      colKey === x ? tile : oldTile
-                  );
-            }
-          )
-        )
-      );
-};

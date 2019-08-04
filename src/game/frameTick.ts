@@ -1,5 +1,5 @@
-import { Board } from "../types/Board";
-import { Piece } from "../types/Piece";
+import { Board } from '../types/Board';
+import { Piece } from '../types/Piece';
 
 export default function frameTick(
   gameBoard: Board,

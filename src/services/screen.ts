@@ -1,3 +1,5 @@
+// import * as React from 'react';
+
 function getWidth(): number {
   return Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
 }
@@ -21,4 +23,13 @@ function isPortrait(): boolean {
   return getHeight() > getWidth();
 }
 
-export { getWidth, getHeight, getLongestDim, getShortestDim, isPortrait };
+// todo I'm not going to write this
+function useScreenSize() {
+  // const [dims, setDims] = React.useState([getWidth(), getHeight()]);
+
+  return {
+    shortestDim: getShortestDim(),
+  };
+}
+
+export { getWidth, getHeight, getLongestDim, getShortestDim, isPortrait, useScreenSize };

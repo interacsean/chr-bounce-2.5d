@@ -1,1 +1,1 @@
-export { default } from "./GameScreen.view";
+export { default } from './GameScreen.view';

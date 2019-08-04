@@ -1,19 +1,11 @@
-const gameScreen__level: Object = {
-  position: "absolute",
-  top: 0,
-  left: 0,
-  right: 0,
-  bottom: 0,
-  width: "100%",
-  height: "100%"
-};
+import { CSSProperties } from 'react';
 
-export default function createStyles(vars: Object): Object {
+export default function createStyles() {
   return {
-    gameScreen__ctnr: {
-      width: "100%",
-      height: "100%",
-      position: "relative"
+    gameScreen__ctnr: <CSSProperties> {
+      width: '100%',
+      height: '100%',
+      position: 'relative'
     }
   };
 }

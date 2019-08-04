@@ -1,11 +1,10 @@
-import * as React from "react";
-import { render } from "react-dom";
-import Main from "./Main";
+import * as React from 'react';
+import { render } from 'react-dom';
+import Main from './Main';
 
 const styles = {
-  fontFamily: "sans-serif",
-  height: "100%",
-  border: "1px solid blue"
+  fontFamily: 'sans-serif',
+  height: '100%'
 };
 
 const App = () => (
@@ -14,4 +13,4 @@ const App = () => (
   </div>
 );
 
-render(<App />, document.getElementById("root"));
+render(<App />, document.getElementById('root'));

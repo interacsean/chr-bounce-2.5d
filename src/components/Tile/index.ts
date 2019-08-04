@@ -1,1 +1,1 @@
-export { default } from "./Tile.view";
+export { default } from './Tile.view';

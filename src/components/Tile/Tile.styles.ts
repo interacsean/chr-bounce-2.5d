@@ -1,18 +1,28 @@
-export default function createStyles(vars: Object): Object {
+import { CSSProperties } from 'react';
+
+type Vars = {
+  shortest: number,
+  tileRows: number,
+};
+
+export default function createStyles(vars: Vars) {
   return {
-    tile: {
-      fontFamily: "monospace",
+    tile: <CSSProperties> {
+      fontFamily: 'monospace',
       fontSize: `${vars.shortest / vars.tileRows - 2}px`,
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      whiteSpace: "pre",
-      flex: "1 0 auto",
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      whiteSpace: 'pre',
+      flex: '1 0 auto',
       width: `${vars.shortest / vars.tileRows - 2}px`,
       height: `${vars.shortest / vars.tileRows - 2}px`,
-      marginRight: "2px",
-      marginBottom: "2px",
-      backgroundColor: "rgba(0,0,0,0.1)"
+      margin: '1px',
+      backgroundColor: 'rgba(0,0,0,0.1)'
+    },
+    selected: <CSSProperties> {
+      border: '1px solid red',
+      margin: 0,
     }
   };
 }

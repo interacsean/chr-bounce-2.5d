@@ -1,4 +1,4 @@
-import { BoardTile as BoardTileType } from "../types/BoardTile";
+import { BoardTile as BoardTileType } from '../types/BoardTile';
 
 // todo: fill and use
 const validTileChrs: Set<string> = new Set();
