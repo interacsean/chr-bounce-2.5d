@@ -4,8 +4,7 @@ import Main from "./Main";
 
 const styles = {
   fontFamily: "sans-serif",
-  height: "100%",
-  border: "1px solid blue"
+  height: "100%"
 };
 
 const App = () => (

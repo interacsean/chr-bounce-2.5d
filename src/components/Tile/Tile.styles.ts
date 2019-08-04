@@ -1,4 +1,4 @@
-export default function createStyles(vars: Object): Object {
+export default function createStyles(vars: Object) {
   return {
     tile: {
       fontFamily: "monospace",

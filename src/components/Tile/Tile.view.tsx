@@ -13,6 +13,7 @@ const Tile: React.ComponentType<Props> = ({
 }: Props): React.ReactElement<"span"> => {
   const styles: Object = createStyles({
     shortest: screenUtils.getShortestDim(),
+    // get from context
     tileRows: 15 //todo: remove hardcoding
   });
   const useChr: string = tile.chr === " " ? " " : tile.chr;
