@@ -1,11 +1,13 @@
 import { moveCursor, trySetTile } from '../models/Board';
-import { Cursor as CursorType, Board as BoardType, Direction } from '../types';
+import { Cursor as CursorType, Board as BoardType, Direction, Piece } from '../types';
 
 interface HandleKeyProps {
   setCursor: Function;
   cursor: CursorType;
   setBoard: Function;
   board: BoardType;
+  setPieces: Function;
+  pieces: Array<Piece>;
 }
 
 export default function handleKey(props: HandleKeyProps, event: KeyboardEvent) {
@@ -17,6 +19,8 @@ export default function handleKey(props: HandleKeyProps, event: KeyboardEvent) {
     moveCursor(props, Direction.S)();
   } else if (event.code === 'ArrowUp') {
     moveCursor(props, Direction.N)();
+  } else if (event.code === 'Enter') {
+    props.setPieces(props.pieces.concat([{x: 1, y: 1, dir: Direction.S}]));
   } else if (
     (event.keyCode >= 65 && event.keyCode <= 90) || // a-z
     (event.keyCode >= 48 && event.keyCode <= 57) // 0-9

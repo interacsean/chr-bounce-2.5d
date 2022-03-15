@@ -10,7 +10,7 @@ const GameScreen: React.ComponentType<Props> = (
   return (
     <div style={styles.gameScreen__ctnr}>
       <Level
-        level={props.board.get(props.cursor[2]) || []}
+        level={props.board.levels.get(props.cursor[2])}
         cursor={props.cursor}
       />
     </div>

@@ -1,3 +1,7 @@
 import { BoardLevel } from './BoardLevel';
+import { Piece } from './Piece';
 
-export type Board = Map<number, BoardLevel>;
+export type Board = {
+  levels: Map<number, BoardLevel>,
+  pieces: Array<Piece>,
+};

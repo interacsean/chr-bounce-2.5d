@@ -7,7 +7,6 @@ import {
 import { default as moveCursorPure } from './Board/moveCursor';
 import { default as trySetTile } from './Board/trySetTile';
 import { newBoardTile } from './BoardTile';
-import { partial } from 'lodash';
 
 const BOARD_WIDTH: number = 12;
 const BOARD_HEIGHT: number = 12;
@@ -22,7 +21,7 @@ const moveCursor: Function = (
 ): Function => moveCursorPure({ BOARD_HEIGHT, BOARD_WIDTH, ...deps }, nesw);
 
 function getDefaultBoard(): BoardType {
-  const a: Function = partial(newBoardTile, ' '); // () => newBoardTile(" ");
+  const a: Function = () => newBoardTile(' ');
   const newLevel: Function = (): BoardLevelType =>
     ((): BoardLevelType => {
       let board: BoardLevelType = [];
@@ -34,7 +33,10 @@ function getDefaultBoard(): BoardType {
       }
       return board;
     })();
-  return new Map([[0, newLevel()], [1, newLevel()], [2, newLevel()]]);
+  return {
+    levels: new Map([[0, newLevel()], [1, newLevel()], [2, newLevel()]]),
+    pieces: [],
+  };
 }
 
 export { getDefaultBoard, moveCursor, trySetTile };
